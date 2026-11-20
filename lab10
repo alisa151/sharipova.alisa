@@ -1,0 +1,21 @@
+import operator
+def _mid_index(low: int, high: int) -> int:
+    return operator.add(low, operator.floordiv(operator.sub(high, low), 2))
+def _should_move_left(value: int, target: int) -> bool:
+    return operator.ge(value, target)
+def _is_match(value: int, target: int) -> bool:
+    return operator.eq(value, target)
+def binary_search_first(lst: list, target: int) -> int:
+    low = 0
+    high = operator.sub(len(lst), 1)
+    result = -1
+    while operator.le(low, high):
+        mid = _mid_index(low, high)
+        current = lst[mid]
+        if _is_match(current, target):
+            result = mid
+        if _should_move_left(current, target):
+            high = operator.sub(mid, 1)
+        else:
+            low = operator.add(mid, 1)
+    return result
