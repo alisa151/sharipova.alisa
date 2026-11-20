@@ -1,19 +1,6 @@
 import operator
-_UNESCAPE_PAIRS = (
-    ("&lt;", "<"),
-    ("&gt;", ">"),
-    ("&quot;", '"'),
-    ("'", "'"),
-    ("&apos;", "'"),
-    ("&amp;", "&"),
-)
-_ESCAPE_PAIRS = (
-    ("&", "&amp;"),
-    ("<", "&lt;"),
-    (">", "&gt;"),
-    ('"', "&quot;"),
-    ("'", "'"),
-)
+_UNESCAPE_PAIRS = (("&lt;", "<"),("&gt;", ">"),("&quot;", '"'),("'", "'"),("&apos;", "'"),("&amp;", "&"),)
+_ESCAPE_PAIRS = (("&", "&amp;"),("<", "&lt;"),(">", "&gt;"),('"', "&quot;"),("'", "'"),)
 def _replace_pair(text: str, pair: tuple[str, str]) -> str:
     old, new = pair
     return operator.methodcaller("replace", old, new)(text)
